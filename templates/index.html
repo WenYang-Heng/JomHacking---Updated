@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/index.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <title>Upload a file</title>
+</head>
+<body>
+    <div class="main">
+        <div class="content">
+            <h3>Upload a file!</h3>
+            <div class="upload-box">
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='assets/cloud-computing.png') }}" alt="Upload Logo">
+                </div>
+                <p>Drag and drop your file here</p>
+                <p>or</p>
+                <!-- <button onclick="processPDF">Select your file</button> -->
+                <form action="/success/" method="post">
+                    <input class="button-style" type="submit" value="Upload">
+                </form>
+            </div> 
+        </div>
+    </div>
+</body>
+</html>
