@@ -12,15 +12,15 @@
 <body>
     <div class="main">
         <div class="content">
-            <h3>Upload a file!</h3>
+            <h3>Upload your file</h3>
             <div class="upload-box">
                 <div class="logo">
                     <img src="{{ url_for('static', filename='assets/cloud-computing.png') }}" alt="Upload Logo">
                 </div>
                 <p>Drag and drop your file here</p>
                 <p>or</p>
-                <!-- <button onclick="processPDF">Select your file</button> -->
                 <form action="/success/" method="post">
+                    <input type="file" value="Choose file">
                     <input class="button-style" type="submit" value="Upload">
                 </form>
             </div> 
