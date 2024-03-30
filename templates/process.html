@@ -3,9 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/process.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <title>Proccess</title>
 </head>
 <body>
-    <p>{{data}}</p>
+    <div class="main">
+        <div class="shariah">
+            <h1>{{data.Company_Name}}</h1>
+            <div class="logo">
+                <img src="{{ url_for('static', filename='assets/remove.png') }}" alt="">
+            </div>
+            <p style="font-size: 14px;">Non Shariah Compliant</p>
+        </div>
+        <h2>Principal Activities</h2>
+        <ul class="principal">
+            <li>Plantation</li>
+            <li>Automotive</li>
+            <li>Building Materials</li>
+            <li>Credit Financing</li>
+            <li>Property</li>
+            <li>Trading</li>
+        </ul>
+        <div class="dashbaord">
+            <div class="element group-revenue">
+                <p class="title">Group Revenue</p>
+                <p class="consolidated">RM{{data.Consolidated_Revenue}}</p>
+            </div>
+            <div class="element profit-before-tax">
+                <p class="title">Profit Before Tax</p>
+                <p class="consolidated">RM{{data.Consolidated_Operating_Profit}}</p>
+            </div>
+        </div>
+        
+        <div class="group-compliance">
+            <h2>Non Compliance Metric</h2>
+        </div>
+
+        <div class="financial-ratio"></div>
+
+        <div class="business">
+            <div class="element activity">
+                <div class="five-percent">
+                    <h4>Severe</h4>
+                    <p class="percent" style="color: #359424;">3.4%</p>
+                    <p class="value">RM{{severeBench.Credit_Financing.Revenue}}</p>
+                    <p class="caption">Total</p>
+                </div>
+                <ul class="compliance-list">
+                    <li>Credit Financing - RM{{severeBench.Credit_Financing.Revenue}}</li>
+                </ul>
+            </div>
+            <div class="element activity">
+                <div class="twenty-percent">
+                    <h4>Less Severe</h4>
+                    <p class="percent" style="color: #359424;">5.6%</p>
+                    <p class="value">RM128,583</p>
+                    <p class="caption">Total</p>
+                </div>
+                <ul class="compliance-list">
+                    <li>Property - RM{{lessSevereBench.Property.Revenue}}</li>
+                    <li>Trading - RM{{lessSevereBench.Trading.Revenue}}</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Financial Ratio</h2>
+        <div class="status">
+            <div class="element cash">
+                <p class="percent" style="color: #359424;">{{data.Cash_to_Total_Assets_Ratio}}</p>
+                <p class="value">RM{{data.Cash_and_Bank_Balances}}</p>
+                <p class="caption">Total Cash</p>
+            </div>
+
+            <div class="element debt">
+                <p class="percent" style="color: #992929;">{{data.Debt_to_Total_Assets_Ratio}}</p>
+                <p class="value">RM{{data.Total_Debt}}</p>
+                <p class="caption">Total Debt</p>
+            </div>
+
+            <div class="legend">
+                <div class="rect">
+                    <div class="red"></div>
+                    <p>Non Compliant</p>
+                </div>
+                <div class=rect>
+                    <div class="green"></div>
+                    <p>Compliant</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
